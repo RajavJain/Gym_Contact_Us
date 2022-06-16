@@ -14,12 +14,6 @@ app.set('view engine', 'pug') // Set the template engine as pug
 app.set('views', path.join(__dirname, 'views')) // Set the views directory
  
 // ENDPOINTS
-app.get('/', (req, res)=>{
-    const con = "This is the best content on the internet so far so use it wisely"
-    const params = {'title': 'Sabzi is the best game', "content": con}
-    res.status(200).render('index.pug', params);
-})
-
 app.post('/', (req, res)=>{
     naam = req.body.naam
     age = req.body.age
