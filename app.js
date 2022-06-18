@@ -14,6 +14,10 @@ app.set('view engine', 'pug') // Set the template engine as pug
 app.set('views', path.join(__dirname, 'views')) // Set the views directory
  
 // ENDPOINTS
+app.get('/', (req, res)=>{
+    res.status(200).render('index.pug');
+})
+
 app.post('/', (req, res)=>{
     naam = req.body.naam
     age = req.body.age
@@ -21,11 +25,11 @@ app.post('/', (req, res)=>{
     address = req.body.address 
     more = req.body.more
 
-    let outputToWrite = `the name of the client is ${naam}, ${age} years old, ${gender}, residing at ${address}. More about him/her: ${more}`
+    let outputToWrite = `The name of the client is ${naam}, ${age} years old, ${gender}, residing at ${address}. More about him/her: ${more}`;
+
     fs.writeFileSync('output.txt', outputToWrite)
     // console.log(req.body);
-    const params = {'message': 'Your form has been submitted successfully'}
-    res.status(200).render('index.pug', params);
+    res.status(200).render('index.pug');
 
 })
 
